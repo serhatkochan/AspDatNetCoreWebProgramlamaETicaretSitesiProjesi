@@ -1,0 +1,60 @@
+﻿@page
+@model CartModel
+<h2 class="mt-5 ml-3 ">Sepetin</h2>
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th>Miktar</th>
+                <th>Ürün</th>
+                <th class="text-right">Fiyat</th>
+                <th class="text-right">Ara Toplam</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Cart.Lines)
+            {
+                <tr>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <form asp-page-handler="Remove" method="post">
+                                    <input type="hidden" name="ProductID"
+                                           value="@line.Product.ProductID" />
+                                    <input type="hidden" name="returnUrl"
+                                           value="@Model.ReturnUrl" />
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Kaldır
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-6">
+                                @line.Quantity
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-left">@line.Product.Name</td>
+                    <td class="text-right">@line.Product.Price.ToString("c")</td>
+                    <td class="text-right">
+                        @((line.Quantity * line.Product.Price).ToString("c"))
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Toplam:</td>
+                <td class="text-right">
+                    @Model.Cart.ComputeTotalValue().ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+<div class="text-center">
+    <a class="btn btn-secondary" href="@Model.ReturnUrl">Alışverişe Devam Et</a>
+    <a class="btn btn-secondary" asp-action="Checkout" asp-controller="Order">
+        Ödeme İşlemi
+    </a>
+</div>

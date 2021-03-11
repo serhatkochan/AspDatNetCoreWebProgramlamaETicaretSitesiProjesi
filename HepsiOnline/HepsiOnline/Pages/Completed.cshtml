@@ -1,0 +1,11 @@
+﻿@page
+<div class="text-center m-md-5">
+    <h2>Teşekkürler!</h2>
+    <p>#@OrderId numaralı siparişiniz için teşekkürler.</p>
+    <p>Ürünlerinizi mümkün olan en kısa sürede göndereceğiz.</p>
+    <a class="btn btn-primary" asp-controller="Home">Hepsi Online'a Dön</a>
+</div>
+@functions {
+    [BindProperty(SupportsGet = true)]
+    public string OrderId { get; set; }
+}

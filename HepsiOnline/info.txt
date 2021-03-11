@@ -1,0 +1,9 @@
+Grup Adı : Şark ve Garp
+
+Öğrenci Bilgileri:
+Serhat Koçhan 182114026 / İÖ
+Murat Demir 182114053 / İÖ
+
+Yönetici Girişi İçin:
+Kullanıcı Adı = Admin
+Şifre = Secret123$

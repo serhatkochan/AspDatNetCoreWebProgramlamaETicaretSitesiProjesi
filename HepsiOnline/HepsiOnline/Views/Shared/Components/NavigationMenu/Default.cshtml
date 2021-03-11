@@ -1,0 +1,19 @@
+﻿@model IEnumerable<string>
+
+    <a class="btn btn-active btn-outline-secondary" asp-action="Index"
+       asp-controller="Home" asp-route-category="">
+        Bütün Kategoriler
+    </a>
+    <div class="ml-auto">
+        @foreach (string category in Model)
+        {
+            <a class="btn
+        @(category == ViewBag.SelectedCategory
+        ? "btn-primary": "btn-outline-secondary")"
+               asp-action="Index" asp-controller="Home"
+               asp-route-category="@category"
+               asp-route-productPage="1">
+                @category
+            </a>
+        }
+    </div>
